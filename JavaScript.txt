@@ -1,0 +1,40 @@
+const products = [
+    { name: "iPhone 15", price: 5499, quality: "Premium" },
+    { name: "Samsung Galaxy S23", price: 3200, quality: "Premium" },
+    { name: "Motorola G54", price: 1100, quality: "Intermediário" },
+    { name: "Xiaomi Redmi 12", price: 900, quality: "Básico" },
+    { name: "Notebook Dell XPS", price: 8500, quality: "Premium" }
+];
+
+const grid = document.getElementById('productGrid');
+const searchInput = document.getElementById('searchInput');
+const filterQuality = document.getElementById('filterQuality');
+
+function displayProducts(filteredList) {
+    grid.innerHTML = filteredList.map(p => `
+        <div class="card">
+            <h3>${p.name}</h3>
+            <p class="price">R$ ${p.price.toLocaleString('pt-BR')}</p>
+            <span class="quality-tag ${p.quality}">${p.quality}</span>
+        </div>
+    `).join('');
+}
+
+function filter() {
+    const text = searchInput.value.toLowerCase();
+    const quality = filterQuality.value;
+
+    const filtered = products.filter(p => {
+        const matchesText = p.name.toLowerCase().includes(text);
+        const matchesQuality = quality === "all" || p.quality === quality;
+        return matchesText && matchesQuality;
+    });
+
+    displayProducts(filtered);
+}
+
+searchInput.addEventListener('input', filter);
+filterQuality.addEventListener('change', filter);
+
+// Inicializa a tela
+displayProducts(products);
