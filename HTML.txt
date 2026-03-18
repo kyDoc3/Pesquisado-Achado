@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>BuscaPreço - Comparador</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>BuscaPreço 🔍</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="O que você procura? (ex: iPhone, Notebook...)">
+            <select id="filterQuality">
+                <option value="all">Todas as Qualidades</option>
+                <option value="Premium">Premium ⭐⭐⭐</option>
+                <option value="Intermediário">Intermediário ⭐⭐</option>
+                <option value="Básico">Básico ⭐</option>
+            </select>
+        </div>
+    </header>
+
+    <main id="productGrid" class="grid">
+        </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
